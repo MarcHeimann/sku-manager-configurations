@@ -12,7 +12,7 @@ postgresql:
   fullnameOverride: sku-manager-postgresql
 
   persistence:
-    enabled: false
+    enabled: true
 
 ingress:
   host: vi-integration-1.westeurope.cloudapp.azure.com
