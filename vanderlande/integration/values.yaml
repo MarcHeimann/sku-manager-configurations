@@ -1,0 +1,35 @@
+image:
+  # Using no / at the end, only 1 docker container used
+  repository: "vicentral.azurecr.io/vanderlande/wpp/fm_skum/sku-manager"
+  tag: "2.3.0-20200330083724.648"
+  pullSecret: "default-docker-registry"
+
+# Override value to ensure the naming is intact
+fullnameOverride: sku-manager
+
+# Override for database setttings dependency
+postgresql:
+  fullnameOverride: sku-manager-postgresql
+
+  persistence:
+    enabled: false
+
+ingress:
+  host: vi-integration-1.westeurope.cloudapp.azure.com
+
+kafka:
+  broker: kafka.production:9092
+
+certificates:
+  loadAdditionalRoots: false # default is "false" (Azure), for OnPremise switch to "true"
+  
+# Service specific configuration
+configuration:
+  hostAdapter:
+    uri: https://host-adapter.production/host-adapter/api
+    productDataEndpoint: product-data
+    scope: host-adapter
+  goodsSupplier:
+    uri: https://goods-supplier.production/goods-supplier/api
+    stockLotEndpoint: skus
+    scope: goods-supplier 
