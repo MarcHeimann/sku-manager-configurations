@@ -1,7 +1,7 @@
 image:
   # Using no / at the end, only 1 docker container used
   repository: "vicentral.azurecr.io/vanderlande/wpp/fm_skum/sku-manager"
-  tag: "2.3.0-20200330083724.648"
+  tag: ${#triggerResolvedArtifactByType('docker/image')['version']}
   pullSecret: "default-docker-registry"
 
 # Override value to ensure the naming is intact
